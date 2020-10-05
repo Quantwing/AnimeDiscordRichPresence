@@ -1,0 +1,38 @@
+{
+    "manifest_version": 2,
+
+    "name": "Anime Discord Rich Presence",
+    "description": "Enables Discord Rich Presence when watching anime",
+    "version": "1.0",
+	
+	"background": 
+	{
+		"scripts": ["background.js"],
+		"persistent": false
+	},
+  
+    "content_scripts": 
+	[		
+		{
+			"matches": ["*://*.9anime.ru/watch/*"],
+			"js": ["site_content.js"]
+		},
+		{
+			"matches": ["*://*.prettyfast.to/e/*", "*://*.mp4upload.com/*", "*://*.mcloud.to/*"],
+			"all_frames": true,
+			"js": ["video_content.js"]
+		}
+    ],
+
+    "browser_action": 
+	{
+        "default_icon": "icon.png"
+    },
+	
+    "permissions": 
+	[
+        "activeTab",
+		"tabs",
+		"webNavigation"
+    ]
+}
